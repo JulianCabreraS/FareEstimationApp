@@ -42,7 +42,10 @@ class Trip:
             distance = haversine(origin.lat, origin.lng, destination.lat, destination.lng)
             hours = (destination.timestamp - origin.timestamp) / 3600
 
-            destination.speed = distance / hours
+            if hours == 0:
+                destination.speed = 101
+            else:
+                destination.speed = distance / hours
 
             if destination.speed < 100:
 

@@ -1,5 +1,5 @@
 import csv
-from Trip import Trip, Point
+from classes.Trip import Trip, Point
 
 
 # Validation of latitude and longitude
@@ -29,3 +29,15 @@ def importfile():
             return trips
     except IOError:
         print("File not found.")
+
+
+def writefile(data: dict):
+    try:
+        with open('./files/output.csv', mode='w', encoding='UTF8', newline='') as csv_file:
+            trip_writer = csv.writer(csv_file)
+            trip_writer.writerow(['id_ride', 'fare_estimate'])
+            for idtrip in data.keys():
+                trip: Trip = data[idtrip]
+                trip_writer.writerow([trip.tripid,"{:.2f}".format(trip.fare)])
+    except IOError:
+        print("Writer cannot open or write the file.")
