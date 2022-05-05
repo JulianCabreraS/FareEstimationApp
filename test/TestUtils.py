@@ -11,7 +11,7 @@ class TestUtils(unittest.TestCase):
     def test_checkN_LatLNg_isNotValid(self):
         self.assertFalse(checkvalid(30, 181))
 
-    def test_haversine(self):
+    def test_haversine_isCorrect(self):
         self.assertEqual(haversine(52.2296756, 21.0122287, 52.406374, 16.9251681), 278.4581750754194)
 
 

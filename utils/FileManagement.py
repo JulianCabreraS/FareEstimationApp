@@ -7,7 +7,7 @@ def checkvalid(lat, lng):
     return -90 <= lat <= 90 and -180 <= lng <= 180
 
 
-def importfile():
+def readfile():
     trips = {}
     try:
         with open('./files/paths.csv') as csv_file:
@@ -29,15 +29,20 @@ def importfile():
             return trips
     except IOError:
         print("File not found.")
+    except csv.Error:
+        print("Incorrect data found.")
+    except ValueError as ex:
+        print("The application found incorrect information.")
 
 
 def writefile(data: dict):
     try:
         with open('./files/output.csv', mode='w', encoding='UTF8', newline='') as csv_file:
             trip_writer = csv.writer(csv_file)
-            trip_writer.writerow(['id_ride', 'fare_estimate'])
+            print('id_ride', 'fare_estimate')
             for idtrip in data.keys():
                 trip: Trip = data[idtrip]
-                trip_writer.writerow([trip.tripid,"{:.2f}".format(trip.fare)])
+                trip_writer.writerow([trip.tripid, "{:.2f}".format(trip.fare)])
+                print("id_ride: {} fare_estimate: {:.2f} Record Written".format(trip.tripid, trip.fare))
     except IOError:
         print("Writer cannot open or write the file.")

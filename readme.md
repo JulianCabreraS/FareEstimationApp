@@ -1,7 +1,7 @@
 # Fare Estimation App
 
 ## Use Instructions
-1. Load a paths.csv file in [/Files](./Files)
+1. Load a paths.csv file in [/Files](./files)
 2. Run application with the command python appFareEstimation.py
 3. Output file will be generated in [/files/output.csv](./files/output.csv)
 

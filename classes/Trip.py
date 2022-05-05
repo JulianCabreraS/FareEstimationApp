@@ -53,8 +53,9 @@ class Trip:
                 self.fare = self.fare + destination.fare
 
                 origin: Point = self.points[index]
-            if self.fare < utils.Constants.MINIMUM_FARE:
-                self.fare = utils.Constants.MINIMUM_FARE
+
+        if self.fare < utils.Constants.MINIMUM_FARE:
+            self.fare = utils.Constants.MINIMUM_FARE
 
     def __str__(self):
         return f'Idtrip: {self.tripid} : \nFare = {self.fare} \nPoints:\n  {[str(point) for point in self.filteredPoints]}'
@@ -68,3 +69,6 @@ class Trip:
         print(f'Idtrip: {self.tripid} : \nFare = {self.fare}')
         for point in self.points:
             print(str(point))
+
+    def numberOfPoint(self):
+        return len(self.points)
